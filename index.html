@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime Number</title>
+    <link rel="stylesheet" href="prime.css">
+
+</head>
+<body>
+    <div class="container">
+      
+        <div class="main">
+            <div class="enterText">Enter a Number to check Prime or Not</div>
+            <div class="enter">
+                <input class="input"type="text" placeholder="?">
+                <button class="submit">Submit</button>
+                <button class="cancle">Reset</button>
+            </div>
+            <div class="display"></div>
+
+        </div>
+    
+    </div>
+
+    <script>
+
+        let inp=document.querySelector(".input")
+        let display=document.querySelector(".display")
+        let submit=document.querySelector(".submit")
+        let cancle=document.querySelector(".cancle")
+        
+        
+        submit.onclick=function(){
+            let num=inp.value
+            let count=0
+           
+            function containsAnyLetters(str) {
+                return /[a-zA-Z]/.test(str);
+            }
+
+            if (containsAnyLetters(num)) {
+                display.innerText='Invalid input '
+            }
+
+            // else{
+
+            //     for(let i=2;i<num;i++){       
+            //         if(num%i===0){
+            //             count+=1
+            //         }
+            //     }
+            //     if(count==0 && inp.value!=''){
+            //         display.innerText="prime"
+            //     }
+            //     else if(count!=0 && inp.value!=''){
+            //         display.innerText="not prime"
+            //     }
+            // }
+
+            else{
+                if(inp.value % 2!= 0){
+                    sq = Math.floor(Math.sqrt(inp.value))
+                    console.log(sq)
+                    for (let i=3;i<sq;i++){
+                        if (inp.value % i ==0){
+                            display.innerText = "not prime"
+                            break
+                            }
+                        else{
+                            count =1
+                            }
+                        }
+                    if (count == 1){
+                        display.innerText = "prime"
+                            }                    
+                    }
+                else{
+                    display.innerText = "not prime"
+                    }
+        }
+        cancle.onclick=function(){
+            inp.value=''
+            display.innerText=''
+        }
+    }
+      
+        
+    </script>
+</body>
+</html>
